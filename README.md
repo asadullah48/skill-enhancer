@@ -7,7 +7,7 @@ Next.js and Sanity CMS. It helps students find international scholarships —
 browsable by country or level of study — funded by a headless CMS so new
 opportunities can be published without a code deploy.
 
-**Live:** [skill-enhancer.vercel.app](https://skill-enhancer.vercel.app)
+**Live:** [skill-enhancer-eight.vercel.app](https://skill-enhancer-eight.vercel.app)
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
 ![React](https://img.shields.io/badge/React-19_RC-61dafb?logo=react)
