@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
-import { client, urlFor } from "@/sanity/lib/client";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import HeroCountries from "./components/hero-countries";
 

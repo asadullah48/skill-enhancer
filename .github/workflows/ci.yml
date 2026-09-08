@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint-and-typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # react 19-rc pinned alongside packages that still declare a react ^18
+      # peer (see README "Known Issues") — legacy-peer-deps is required here.
+      - run: npm install --legacy-peer-deps
+      - run: npm run lint
+      - run: npx tsc --noEmit
+
+      # `next build` is intentionally NOT run in CI: this app fetches its
+      # scholarship content from a live Sanity project at build time
+      # (NEXT_PUBLIC_SANITY_PROJECT_ID/DATASET), and CI has no access to
+      # real Sanity credentials or dataset content. Lint + typecheck catch
+      # the class of bugs (missing deps, broken imports) that a build
+      # would otherwise be needed to surface.

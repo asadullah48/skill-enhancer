@@ -1,7 +1,8 @@
 
 
 // Import `useParams` from next/navigation
-import { client, urlFor } from "@/sanity/lib/client"
+import { client } from "@/sanity/lib/client"
+import { urlFor } from "@/sanity/lib/image"
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
