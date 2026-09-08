@@ -21,7 +21,7 @@ export default function Footer() {
         </button>
       </div>
       <div className="m-3">
-        &copy; 2024 SkillEnhancer.pk | All rights reserved.
+        &copy; {new Date().getFullYear()} SkillEnhancer.pk | All rights reserved.
       </div>
     </div>
   );
