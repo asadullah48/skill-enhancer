@@ -90,8 +90,8 @@ language student profile, using this exact dataset.
 ```bash
 git clone https://github.com/asadullah48/skill-enhancer.git
 cd skill-enhancer
-npm install --legacy-peer-deps   # see Known Issues — required today
-cp .env.example .env.local       # fill in your Sanity project ID + dataset
+npm install                # .npmrc handles the peer-dep conflict, see Known Issues
+cp .env.example .env.local # fill in your Sanity project ID + dataset
 npm run dev
 ```
 
@@ -115,9 +115,11 @@ Sanity project instead.
 Found during this audit, documented rather than hidden:
 
 - **Peer dependency conflict:** the pinned React 19 RC build conflicts with
-  `@sanity/vision`'s strict `react@^18` peer requirement — `npm install`
-  requires `--legacy-peer-deps` until the Sanity toolchain (or this
-  project's React pin) updates.
+  `@sanity/vision`'s strict `react@^18` peer requirement — a plain
+  `npm install` fails with `ERESOLVE` without it. `.npmrc` sets
+  `legacy-peer-deps=true` so this resolves automatically (on Vercel, CI,
+  and fresh clones alike) until the Sanity toolchain (or this project's
+  React pin) updates.
 - **Contact form is a front-end stub** — it validates and resets, but
   `handleSubmit` only `console.log`s the payload; no email/API integration
   yet.

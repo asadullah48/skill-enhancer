@@ -7,9 +7,8 @@ any size — a broken link, a new country page, a whole feature — are welcome.
 ## Getting set up
 
 1. Fork and clone the repo.
-2. `npm install --legacy-peer-deps` (required — see "Known Issues" in the
-   README: a pinned React 19 RC conflicts with a package that still declares
-   a strict `react@^18` peer dependency).
+2. `npm install` (`.npmrc` handles a react-19-RC peer-dep conflict
+   automatically — see "Known Issues" in the README).
 3. Create a [Sanity](https://www.sanity.io/) project (free tier) with a
    `scholarship` document type matching
    `src/sanity/schemaTypes/scholarship-schema.ts`, then:

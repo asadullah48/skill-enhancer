@@ -17,9 +17,10 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      # react 19-rc pinned alongside packages that still declare a react ^18
-      # peer (see README "Known Issues") — legacy-peer-deps is required here.
-      - run: npm install --legacy-peer-deps
+      # .npmrc sets legacy-peer-deps=true (react 19-rc pinned alongside a
+      # package still declaring a strict react ^18 peer — see README
+      # "Known Issues"), so a plain install resolves correctly here too.
+      - run: npm install
       - run: npm run lint
       - run: npx tsc --noEmit
 
