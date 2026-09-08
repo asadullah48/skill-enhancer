@@ -17,21 +17,21 @@ interface scholarshipDetails {
 }
 
 async function getData(slug: string){
-    const query = `
-    *[_type == "scholarship" && slug.current =='${slug}' ]{
+    const query = `*[_type == "scholarship" && slug.current == $slug]{
   "currentSlug":slug.current,
     heading,
     description,
     image
 }[0]`;
 
-const data1:scholarshipDetails = await client.fetch(query);
+const data1:scholarshipDetails = await client.fetch(query, { slug });
 return data1;
 
 }
 
-export default async function ScholarshipArticle({params}: {params : {slug:string}} ){
-    const data1 = await getData(params.slug);
+export default async function ScholarshipArticle({params}: {params: Promise<{slug:string}>} ){
+    const { slug } = await params;
+    const data1 = await getData(slug);
     return (
         <div id="top">
             <div className="flex justify-center my-8">

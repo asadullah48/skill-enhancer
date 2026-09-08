@@ -10,8 +10,8 @@ import Image from 'next/image';
 
 
   // Use `useParams` to get the countryName
-  const ScholarshipsByCountry = async ({ params }: { params: { countryName: string} }) => {
-    const { countryName } = params;
+  const ScholarshipsByCountry = async ({ params }: { params: Promise<{ countryName: string}> }) => {
+    const { countryName } = await params;
   
   interface scholarshipsType {
     heading : string,
